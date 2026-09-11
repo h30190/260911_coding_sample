@@ -1,0 +1,6 @@
+{
+  "name": "Project Management & RFI Tracker",
+  "description": "A professional Kanban-based project management system with integrated RFI (Request for Information) tracking, attachment support, and team collaboration tools.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

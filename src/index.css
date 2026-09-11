@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme {
+  --font-primary: "MS Sans Serif", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-heading: "Arial Black", Impact, Haettenschweiler, sans-serif;
+  --font-mono: "Courier New", Courier, monospace;
+  
+  --color-background: #C0C0C0;
+  --color-foreground: #000000;
+  --color-muted: #808080;
+  --color-accent: #0000FF;
+  --color-secondary: #FF0000;
+  --color-tertiary: #FFFF00;
+  --color-success: #00FF00;
+  --color-success-dark: #00AA00;
+  --color-win-navy: #000080;
+  --color-win-blue: #1084D0;
+  --color-win-yellow: #FFFFCC;
+}
+
+@layer base {
+  * {
+    @apply border-none rounded-none shadow-none transition-none;
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-[#C0C0C0] text-black font-primary selection:bg-[#000080] selection:text-white antialiased;
+    background-image:
+      linear-gradient(45deg, #b8b8b8 25%, transparent 25%),
+      linear-gradient(-45deg, #b8b8b8 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #b8b8b8 75%),
+      linear-gradient(-45deg, transparent 75%, #b8b8b8 75%);
+    background-size: 4px 4px;
+    background-position: 0 0, 0 2px, 2px -2px, -2px 0px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight leading-tight uppercase;
+  }
+
+  a {
+    @apply text-[#0000FF] underline hover:text-[#FF0000] visited:text-[#800080] cursor-pointer;
+  }
+
+  button {
+    @apply cursor-pointer outline-none;
+  }
+}
+
+@layer utilities {
+  /* 90s Bevel Effects */
+  .bevel-outset {
+    border: 2px solid;
+    border-color: #ffffff #808080 #808080 #ffffff;
+    box-shadow: inset -1px -1px 0 #404040, inset 1px 1px 0 #dfdfdf;
+  }
+
+  .bevel-inset {
+    border: 2px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    box-shadow: inset 1px 1px 0 #404040, inset -1px -1px 0 #dfdfdf;
+  }
+
+  .bevel-outset-deep {
+    border: 2px solid;
+    border-color: #ffffff #808080 #808080 #ffffff;
+    box-shadow:
+      inset -2px -2px 0 #808080,
+      inset 2px 2px 0 #fff,
+      inset -4px -4px 0 #404040,
+      inset 4px 4px 0 #dfdfdf;
+  }
+
+  /* Animations */
+  @keyframes rainbow {
+    0% { color: #ff0000; }
+    17% { color: #ff8000; }
+    33% { color: #ffff00; }
+    50% { color: #00ff00; }
+    67% { color: #0080ff; }
+    83% { color: #8000ff; }
+    100% { color: #ff0000; }
+  }
+  .text-rainbow {
+    animation: rainbow 4s linear infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
+    50% { transform: scale(1.05); box-shadow: 0 0 10px 2px rgba(255, 0, 0, 0.5); }
+  }
+  .animate-pulse-glow {
+    animation: pulse-glow 1.5s ease-in-out infinite;
+  }
+
+  /* Construction Stripes */
+  .bg-construction {
+    background: repeating-linear-gradient(
+      45deg,
+      #ffff00,
+      #ffff00 10px,
+      #000000 10px,
+      #000000 20px
+    );
+  }
+
+  /* Win 95 Title Bar */
+  .win-title-bar {
+    background: linear-gradient(to right, #000080, #1084D0);
+    @apply text-white font-heading text-sm px-2 py-1 flex items-center justify-between;
+  }
+
+  /* HR Groove */
+  .hr-groove {
+    border: none;
+    height: 4px;
+    background: linear-gradient(
+      to bottom,
+      #808080 0%, #808080 50%,
+      #ffffff 50%, #ffffff 100%
+    );
+    @apply my-4;
+  }
+}
+
+/* Windows 95 Focus Ring */
+*:focus-visible {
+  outline: 2px dotted #000;
+  outline-offset: 2px;
+}
